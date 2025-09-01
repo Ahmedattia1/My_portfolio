@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,8 +18,16 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(formData.subject);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:ahmed.s.attia85@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -45,7 +53,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-gray-800 font-medium">Email</p>
-                  <p className="text-gray-600">ahmed.sayed@example.com</p>
+                  <p className="text-gray-600">ahmed.s.attia85@gmail.com</p>
                 </div>
               </div>
               
@@ -55,7 +63,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-gray-800 font-medium">Phone</p>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">+201279758282</p>
                 </div>
               </div>
               
@@ -73,6 +81,14 @@ const Contact = () => {
             <div className="mt-8">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Connect With Me</h4>
               <div className="flex space-x-4">
+                <a
+                  href="https://wa.link/s6bet5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center text-white hover:bg-green-600 transition-colors duration-200"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                </a>
                 <a
                   href="#"
                   className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white hover:bg-primary-700 transition-colors duration-200"

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BookOpen, Network, Shield, Cloud, Server, Monitor, Award } from 'lucide-react';
 
 const Training = () => {

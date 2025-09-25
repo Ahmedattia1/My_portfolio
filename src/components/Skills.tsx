@@ -1,4 +1,3 @@
-import React from 'react';
 import { Cloud, Server, Shield, Monitor, Container, Terminal } from 'lucide-react';
 
 const Skills = () => {

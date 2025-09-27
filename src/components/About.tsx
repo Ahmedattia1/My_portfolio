@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { User, Target, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
+import image1 from '../asset/image_1.webp';
+import image2 from '../asset/image_2.webp';
 
 const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
-    '/src/assets/WhatsApp Image 2025-09-27 at 12.37.03_efdd4515.jpg',
-    '/src/assets/WhatsApp Image 2025-09-27 at 12.37.03_7b729433.jpg'
+    image1,
+    image2
   ];
 
   useEffect(() => {

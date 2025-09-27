@@ -3,10 +3,6 @@ import { User, Target, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 import image1 from '../asset/image_1.webp';
 import image2 from '../asset/image_2.webp';
 
-// Import images directly from src/asset/
-import image1 from '../asset/image_1.webp';
-import image2 from '../asset/image_2.webp';
-
 const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

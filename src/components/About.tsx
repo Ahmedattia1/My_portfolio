@@ -5,8 +5,8 @@ const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
-    '/src/assets/WhatsApp Image 2025-09-27 at 12.37.03_efdd4515.jpg',
-    '/src/assets/WhatsApp Image 2025-09-27 at 12.37.03_7b729433.jpg'
+    '/src/asset/image_1',
+    '/src/asset/image_2'
   ];
 
   useEffect(() => {

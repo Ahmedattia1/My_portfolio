@@ -3,9 +3,13 @@ import { User, Target, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 import image1 from '../asset/image_1.webp';
 import image2 from '../asset/image_2.webp';
 
+// Import images directly from src/asset/
+import image1 from '../asset/image_1.webp';
+import image2 from '../asset/image_2.webp';
+
 const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   const images = [
     image1,
     image2
@@ -44,21 +48,23 @@ const About = () => {
                   alt="Ahmed Sayed"
                   className="w-full h-96 object-cover transition-opacity duration-500"
                 />
-                
+
                 {/* Navigation buttons */}
                 <button
                   onClick={prevImage}
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all duration-200 shadow-lg"
+                  aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5 text-gray-800" />
                 </button>
                 <button
                   onClick={nextImage}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all duration-200 shadow-lg"
+                  aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5 text-gray-800" />
                 </button>
-                
+
                 {/* Image indicators */}
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                   {images.map((_, index) => (
@@ -66,23 +72,24 @@ const About = () => {
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                        index === currentImageIndex 
-                          ? 'bg-white shadow-lg' 
+                        index === currentImageIndex
+                          ? 'bg-white shadow-lg'
                           : 'bg-white bg-opacity-50 hover:bg-opacity-75'
                       }`}
+                      aria-label={`Go to image ${index + 1}`}
                     />
                   ))}
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-6">
               <p className="text-lg text-gray-600 leading-relaxed">
                 I'm Ahmed Sayed, an IT professional with extensive experience in cloud technologies, 
                 infrastructure management, and system administration. My journey spans across multiple 
                 domains including Azure, AWS, Windows Server environments, and Linux systems.
               </p>
-              
+
               <p className="text-lg text-gray-600 leading-relaxed">
                 Beyond technical implementation, I'm passionate about education and mentoring. 
                 As a freelancing instructor, I help students and professionals navigate the 
@@ -95,13 +102,13 @@ const About = () => {
                   <h3 className="font-semibold text-gray-800">Experience</h3>
                   <p className="text-sm text-gray-600">10+ Years</p>
                 </div>
-                
+
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                   <Target className="w-8 h-8 text-primary-600 mx-auto mb-2" />
                   <h3 className="font-semibold text-gray-800">Focus</h3>
                   <p className="text-sm text-gray-600">Cloud & Infrastructure</p>
                 </div>
-                
+
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                   <Heart className="w-8 h-8 text-primary-600 mx-auto mb-2" />
                   <h3 className="font-semibold text-gray-800">Passion</h3>

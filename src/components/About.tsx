@@ -1,6 +1,30 @@
-import { User, Target, Heart } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { User, Target, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const About = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const images = [
+    '/src/assets/WhatsApp Image 2025-09-27 at 12.37.03_efdd4515.jpg',
+    '/src/assets/WhatsApp Image 2025-09-27 at 12.37.03_7b729433.jpg'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   return (
     <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
@@ -11,12 +35,43 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
-                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Ahmed Sayed"
-                className="rounded-lg shadow-lg w-full h-96 object-cover"
-              />
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={images[currentImageIndex]}
+                  alt="Ahmed Sayed"
+                  className="w-full h-96 object-cover transition-opacity duration-500"
+                />
+                
+                {/* Navigation buttons */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all duration-200 shadow-lg"
+                >
+                  <ChevronLeft className="w-5 h-5 text-gray-800" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-2 hover:bg-opacity-100 transition-all duration-200 shadow-lg"
+                >
+                  <ChevronRight className="w-5 h-5 text-gray-800" />
+                </button>
+                
+                {/* Image indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                        index === currentImageIndex 
+                          ? 'bg-white shadow-lg' 
+                          : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
             
             <div className="space-y-6">
